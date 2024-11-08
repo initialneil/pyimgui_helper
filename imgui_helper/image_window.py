@@ -176,6 +176,6 @@ class ImageWindow(WindowWidget):
 
     ##################################################
     # register callback functions
-    def register_callback(self, name, func):
-        self.widget_image.register_callback(name, func)
+    def register_callback(self, name, func, io_args=None, user_data=None):
+        self.widget_image.register_callback(name, func, io_args=io_args, user_data=user_data)
 
