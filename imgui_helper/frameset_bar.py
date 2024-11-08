@@ -43,11 +43,13 @@ class FramesetBar(object):
                     btn_clr = ImGuiColor.COLOR_BAR_FRAME_SELECT
 
             width = btn_w
+            """
             if i < self.num_frames - 1:
                 if (self.status[i] == self.IS_KEYFRAME or self.status[i] == self.IS_TRACKED) and (
                     self.status[i + 1] == self.IS_KEYFRAME or self.status[i + 1] == self.IS_TRACKED) and (
-                        self.status[i] == self.status[i + 1]):
-                    width = btn_w = 1  
+                        self.status[i] != self.status[i + 1]):
+                    width = btn_w - 1
+            """
 
             str = f'##{self.tag}_{i:06d}'
             if button_preset(str, btn_clr, imgui.Vec2(width, 0), disable_ui=self.disable_io):
@@ -57,6 +59,10 @@ class FramesetBar(object):
     def set_keyframe(self, idx):
         if idx >= 0 and idx < self.num_frames:
             self.status[idx] = self.IS_KEYFRAME
+
+    def set_tracked_frame(self, idx):
+        if idx >= 0 and idx < self.num_frames:
+            self.status[idx] = self.IS_TRACKED
                 
     def step_backward(self):
         if self.ui_select > 0:

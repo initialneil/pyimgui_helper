@@ -25,6 +25,7 @@ class WindowWidget(object):
         self.children = []
         self.border = border
         self.max_sz = max_sz
+        self.bg_clr = None
 
     def __repr__(self):
         repr = f'[{self.class_name}] {self.name}'
@@ -45,6 +46,9 @@ class WindowWidget(object):
     @property
     def max_height(self):
         return self.max_sz.y
+    
+    def set_background_color(self, RGB):
+        self.bg_clr = RGB
     
     def release(self):
         for child in self.children:
@@ -92,6 +96,8 @@ class WindowWidget(object):
 
         imgui.set_next_window_position(win_pos.x, win_pos.y)
         imgui.set_next_window_size(win_sz.x, win_sz.y)
+        if self.bg_clr is not None:
+            imgui.push_style_color(imgui.COLOR_WINDOW_BACKGROUND, *self.bg_clr)
         imgui.begin(self.name, True, flags=flags)
         
         # draw current content
@@ -106,11 +112,14 @@ class WindowWidget(object):
             child.show(child_pos, child_sz)
 
         imgui.end()
+        if self.bg_clr is not None:
+            imgui.pop_style_color()
 
     def show_as_child_window(self, win_pos, win_sz):
         imgui.set_next_window_position(win_pos.x, win_pos.y)
         imgui.set_next_window_size(win_sz.x, win_sz.y)
-
+        if self.bg_clr is not None:
+            imgui.push_style_color(imgui.COLOR_CHILD_BACKGROUND, *self.bg_clr)
         imgui.begin_child(self.name, win_sz.x, win_sz.y, True)
 
         # draw children  
@@ -125,3 +134,5 @@ class WindowWidget(object):
             child.show(child_pos, child_sz)
             
         imgui.end_child()
+        if self.bg_clr is not None:
+            imgui.pop_style_color()

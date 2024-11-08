@@ -1,5 +1,5 @@
 Helper for pyimgui
-> The easist way to write GUI app in python -- Neil. Z. SHAO
+> The easiest way to write GUI app in python -- Neil. Z. SHAO
 
 ---
 
