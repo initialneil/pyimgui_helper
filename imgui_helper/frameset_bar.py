@@ -56,6 +56,9 @@ class FramesetBar(object):
                 self.ui_select = i
                 self.callback_ui_select(i)
 
+    def reset_status(self):
+        self.status[:] = 0
+
     def set_keyframe(self, idx):
         if idx >= 0 and idx < self.num_frames:
             self.status[idx] = self.IS_KEYFRAME
