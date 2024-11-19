@@ -6,5 +6,4 @@ from .window_widget import *
 from .layout_horizontal import *
 from .layout_vertical import *
 from .image_window import *
-from .frameset_bar import *
 from .pyimgui_filepicker import FilePicker, DirPicker
