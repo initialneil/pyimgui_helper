@@ -3,6 +3,13 @@ Helper for pyimgui
 
 ---
 
+```
+pip install imgui[full]
+pip install git+https://github.com/initialneil/pyimgui_helper
+```
+
+---
+
 ### Examples
 ##### Application Setup
 ```

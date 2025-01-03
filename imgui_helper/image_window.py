@@ -26,7 +26,7 @@ class ImageWidget(IOHandler):
             gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_S, gl.GL_CLAMP_TO_EDGE)
             gl.glTexParameteri(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_WRAP_T, gl.GL_CLAMP_TO_EDGE)
             # gl.glPixelStorei(gl.GL_UNPACK_ROW_LENGTH,0)
-            self.texture = texture
+            self.texture = int(texture)
             gl.glBindTexture(gl.GL_TEXTURE_2D, 0)
 
     def release(self):
